@@ -9,7 +9,7 @@
     <arg name="cam_frame_id" default="camera"/>
 
     <!-- start orb slam stereo node -->
-    <node name="orb_slam3_stereo" pkg="orb_slam3_ros_wrapper" type="orb_slam3_ros_wrapper_stereo"  respawn="false" output="screen" args="$(arg cam_topic)  ">
+    <node name="orb_slam3_stereo" pkg="orb_slam3_ros_wrapper" type="orb_slam3_ros_wrapper_stereo"  respawn="false" output="screen">
             <!-- Parameters for original ORB-SLAM3 -->
             <param name="voc_file"      type="string"   value="$(arg vocabulary_path)" />
             <param name="config_file" type="string"   value="$(arg config_file)" />
