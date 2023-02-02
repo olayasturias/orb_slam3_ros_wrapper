@@ -15,8 +15,8 @@
             <!-- extra param for custom ros topic -->
             <param name="cam_topic"      type="string"   value="$(arg cam_topic)" />
             <!-- Parameters for ROS -->
-            <param name="world_frame_id"    type="string"   value="$(arg world)" />
-            <param name="cam_frame_id"      type="string"   value="$(arg camera)" />
+            <param name="world_frame_id"    type="string"   value="$(arg world_frame_id)" />
+            <param name="cam_frame_id"      type="string"   value="$(arg camera_frame_id)" />
     </node>
 
     <!-- Visualization - RViz-->
