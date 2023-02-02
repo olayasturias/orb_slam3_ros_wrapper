@@ -52,6 +52,7 @@ catkin_package (
 )
 
 include_directories(
+${PROJECT_NAME}/include
 $ENV{ORBSLAM3_SOURCE_DIR}
 $ENV{ORBSLAM3_SOURCE_DIR}/include
 $ENV{ORBSLAM3_SOURCE_DIR}/include/CameraModels
