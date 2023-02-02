@@ -42,7 +42,7 @@ int main(int argc, char **argv)
         ros::shutdown();
         return 1;
     }
-    else if if (cam_topic == "topic not set")
+    else if (cam_topic == "topic not set")
     {
         ROS_ERROR("Please set camera topic in the launch file");       
         ros::shutdown();
