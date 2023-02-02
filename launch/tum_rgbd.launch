@@ -6,7 +6,7 @@
 
         <!-- Parameters for original ORB-SLAM3 -->
         <param name="voc_file"      type="string"   value="$(find orb_slam3_ros_wrapper)/config/ORBvoc.txt" />
-        <param name="settings_file" type="string"   value="$(find orb_slam3_ros_wrapper)/config/TUM1.yaml" />
+        <param name="config_file" type="string"   value="$(find orb_slam3_ros_wrapper)/config/TUM1.yaml" />
     
         <!-- Parameters for ROS -->
         <param name="world_frame_id"    type="string"   value="world" />

@@ -32,13 +32,13 @@ int main(int argc, char **argv)
     std::string node_name = ros::this_node::getName();
     image_transport::ImageTransport image_transport(node_handler);
 
-    std::string voc_file, settings_file;
+    std::string voc_file, config_file;
     node_handler.param<std::string>(node_name + "/voc_file", voc_file, "file_not_set");
-    node_handler.param<std::string>(node_name + "/settings_file", settings_file, "file_not_set");
+    node_handler.param<std::string>(node_name + "/config_file", config_file, "file_not_set");
 
-    if (voc_file == "file_not_set" || settings_file == "file_not_set")
+    if (voc_file == "file_not_set" || config_file == "file_not_set")
     {
-        ROS_ERROR("Please provide voc_file and settings_file in the launch file");       
+        ROS_ERROR("Please provide voc_file and config_file in the launch file");       
         ros::shutdown();
         return 1;
     } 
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
     
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
     sensor_type = ORB_SLAM3::System::STEREO;
-    ORB_SLAM3::System SLAM(voc_file, settings_file, sensor_type, enable_pangolin);
+    ORB_SLAM3::System SLAM(voc_file, config_file, sensor_type, enable_pangolin);
     ImageGrabber igb(&SLAM);
 
     message_filters::Subscriber<sensor_msgs::Image> left_sub(node_handler, "/camera/left/image_raw", 1);
