@@ -3,7 +3,7 @@ project(orb_slam3_ros_wrapper)
 
 # Change this to your installation of ORB-SLAM3. Default is ~/
 set(ORB_SLAM3_DIR
-   $ENV{HOME}/ORB_SLAM3
+   $ENV{HOME}/dev/SLAM/ORB_SLAM3
 )
 
 set(CMAKE_BUILD_TYPE "Release")
@@ -21,7 +21,7 @@ find_package (catkin REQUIRED COMPONENTS
    message_generation
 )
 
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 4 QUIET)
 MESSAGE("OPENCV VERSION:")
 MESSAGE(${OpenCV_VERSION})
 
@@ -30,10 +30,11 @@ MESSAGE("Eigen3 VERSION:")
 MESSAGE(${Eigen3_VERSION})
 
 find_package(Pangolin REQUIRED)
+find_package(Eigen3 3.4.0 REQUIRED)
 
 catkin_package (
    CATKIN_DEPENDS roscpp rospy std_msgs cv_bridge image_transport tf sensor_msgs message_runtime
-   LIBRARIES {PROJECT_NAME}
+   LIBRARIES {PROJECT_NAME} libDBoW2 libg2o
 )
 
 include_directories(
@@ -45,15 +46,23 @@ include_directories(
    ${EIGEN3_INCLUDE_DIR}
    ${catkin_INCLUDE_DIRS}
    ${Pangolin_INCLUDE_DIRS}
+   /usr/include/opencv4/
 )
 
 # Build ROS nodes
 set(LIBS
-   ${ORB_SLAM3_DIR}/lib/libORB_SLAM3.so
    ${EIGEN3_LIBS}
    ${catkin_LIBRARIES}
    ${Pangolin_LIBRARIES}
    ${OpenCV_LIBS}
+   $ENV{ORB_SLAM3_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
+   $ENV{ORB_SLAM3_DIR}/Thirdparty/g2o/lib/libg2o.so
+   $ENV{ORB_SLAM3_DIR}/lib/libORB_SLAM3.so
+   -lboost_system
+)
+
+target_link_libraries(${PROJECT_NAME}
+${LIBS}
 )
 
 # mono node
