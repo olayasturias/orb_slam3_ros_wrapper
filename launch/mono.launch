@@ -4,8 +4,8 @@
     <arg name="orb_slam3_path" default="$(env HOME)/your_path_to/ORB_SLAM3"/>
     <arg name="vocabulary_path" default="$(arg orb_slam3_path)/Vocabulary/ORBvoc.txt"/>
     <arg name="config_file" default="$(find orb_slam3_ros_wrapper)/config/your_config.yaml"/>
-    <arg name="world_frame_id" default="world"/>
-    <arg name="cam_frame_id" default="camera"/>
+    <arg name="world_frame_id" default="world_orb"/>
+    <arg name="cam_frame_id" default="camera_orb"/>
 
     <!-- start orb slam monocular node -->
     <node name="orb_slam3_mono" pkg="orb_slam3_ros_wrapper" type="orb_slam3_ros_wrapper_mono"  respawn="false" output="screen">
